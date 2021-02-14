@@ -25,6 +25,7 @@ class Configuration {
         }
         interceptors.add(LoggingInterceptor())
         restTemplate.interceptors = interceptors
+        restTemplate.errorHandler = CustomErrorHandler()
         return restTemplate
     }
 

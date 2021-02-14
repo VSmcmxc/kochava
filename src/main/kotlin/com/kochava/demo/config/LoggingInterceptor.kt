@@ -4,6 +4,7 @@ package com.kochava.demo.config
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpRequest
+import org.springframework.http.HttpStatus
 import org.springframework.http.client.ClientHttpRequestExecution
 import org.springframework.http.client.ClientHttpRequestInterceptor
 import org.springframework.http.client.ClientHttpResponse
@@ -24,6 +25,9 @@ class LoggingInterceptor : ClientHttpRequestInterceptor {
     ): ClientHttpResponse {
         logger.debug("Request body: {}", String(body, StandardCharsets.UTF_8))
         val response: ClientHttpResponse = execution.execute(request, body)
+        if (response.statusCode == HttpStatus.FORBIDDEN) {
+            return response
+        }
         val isr = InputStreamReader(
             response.body, StandardCharsets.UTF_8
         )
@@ -32,6 +36,5 @@ class LoggingInterceptor : ClientHttpRequestInterceptor {
         logger.debug("Response body: {}", responseBody)
         return response
     }
-
 
 }

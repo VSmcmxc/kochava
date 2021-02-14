@@ -9,13 +9,10 @@ import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping(value = ["/sendData"], produces = [MediaType.APPLICATION_JSON_VALUE])
+@RequestMapping(value = ["/app/data"], produces = [MediaType.APPLICATION_JSON_VALUE])
 class MainController(
     val appsFlyerService: AppsFlyerService,
     val kochavaService: KochavaService
@@ -26,7 +23,7 @@ class MainController(
 
     val logger: Logger = LoggerFactory.getLogger(MainController::class.java)
 
-    @GetMapping()
+    @PostMapping()
     fun sendData(
         @RequestParam(value = "appsflyer_uid", required = false) appsflyer_uid: String?,
         @RequestParam(value = "google_id", required = true) google_id: String,

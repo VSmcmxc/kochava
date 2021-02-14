@@ -27,6 +27,6 @@ class KochavaServiceImpl(
             kochava_device_id = kochava_device_id
         )
         val request: HttpEntity<KochavaDto> = HttpEntity<KochavaDto>(kochavaDto)
-        return restTemplate.postForObject<String>(kochavaUrl, request, String::class.java)
+        return restTemplate.postForObject(kochavaUrl, request, String::class.java)
     }
 }
