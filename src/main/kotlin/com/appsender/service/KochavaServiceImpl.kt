@@ -21,7 +21,7 @@ class KochavaServiceImpl(
         val kochavaDto = KochavaDto(
             data = Data(
                 usertime = Instant.now().toEpochMilli(),
-                device_ids = listOf(DeviceId(google_id)),
+                device_ids = DeviceId(google_id),
                 event_data = EventData()
             ),
             kochava_app_id = kochava_app_id,
