@@ -1,4 +1,4 @@
-package com.kochava.demo
+package com.`appsender`
 
 import org.springframework.boot.Banner
 import org.springframework.boot.autoconfigure.SpringBootApplication

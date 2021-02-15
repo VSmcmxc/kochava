@@ -8,8 +8,7 @@ plugins {
 	kotlin("plugin.spring") version "1.4.21"
 }
 
-group = "com.kochava"
-version = "0.0.1-SNAPSHOT"
+group = "com.app-sender"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -22,6 +21,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("org.springframework.boot:spring-boot-starter-logging")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("io.springfox:springfox-swagger2:2.7.0")

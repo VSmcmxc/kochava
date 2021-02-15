@@ -1,4 +1,4 @@
-package com.kochava.demo.rest.dto
+package com.appsender.rest.dto
 
 data class DeviceId(
     val idfa: String

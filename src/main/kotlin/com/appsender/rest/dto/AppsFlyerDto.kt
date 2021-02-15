@@ -1,4 +1,4 @@
-package com.kochava.demo.rest.dto
+package com.appsender.rest.dto
 
 data class AppsFlyerDto(
     val appsflyer_id: String,

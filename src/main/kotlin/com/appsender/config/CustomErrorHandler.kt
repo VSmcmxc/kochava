@@ -1,17 +1,21 @@
-package com.kochava.demo.config
+package com.appsender.config
 
-import com.kochava.demo.rest.MainController
+import com.appsender.rest.MainController
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.client.ClientHttpResponse
 import org.springframework.web.client.ResponseErrorHandler
 import java.io.IOException
 import org.springframework.http.HttpStatus
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.nio.charset.StandardCharsets
+import java.util.stream.Collectors
 
 
 class CustomErrorHandler : ResponseErrorHandler {
 
-    private val logger: Logger = LoggerFactory.getLogger(MainController::class.java)
+    private val logger: Logger = LoggerFactory.getLogger(CustomErrorHandler::class.java)
 
     @Throws(IOException::class)
     override fun handleError(clienthttpresponse: ClientHttpResponse) {
@@ -23,13 +27,13 @@ class CustomErrorHandler : ResponseErrorHandler {
     @Throws(IOException::class)
     override fun hasError(clienthttpresponse: ClientHttpResponse): Boolean {
         if (clienthttpresponse.statusCode != HttpStatus.OK) {
-            logger.debug("Status code: " + clienthttpresponse.statusCode)
-            logger.debug("Response" + clienthttpresponse.statusText)
-            logger.debug(clienthttpresponse.body.toString())
-            if (clienthttpresponse.statusCode == HttpStatus.FORBIDDEN) {
-                logger.debug("Call returned a error 403 forbidden response ")
-                return true
-            }
+            logger.error("Status code: " + clienthttpresponse.statusCode)
+            val isr = InputStreamReader(
+                clienthttpresponse.body, StandardCharsets.UTF_8
+            )
+            val responseBody = BufferedReader(isr).lines()
+                .collect(Collectors.joining("\n"))
+            logger.error("Response body: {}", responseBody)
         }
         return false
     }

@@ -1,6 +1,4 @@
-package com.kochava.demo.rest.dto
-
-import java.util.*
+package com.appsender.rest.dto
 
 data class Data(
     val usertime: Long,

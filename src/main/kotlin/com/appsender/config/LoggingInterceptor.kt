@@ -1,4 +1,4 @@
-package com.kochava.demo.config
+package com.appsender.config
 
 
 import org.slf4j.Logger
@@ -23,7 +23,7 @@ class LoggingInterceptor : ClientHttpRequestInterceptor {
         body: ByteArray,
         execution: ClientHttpRequestExecution
     ): ClientHttpResponse {
-        logger.debug("Request body: {}", String(body, StandardCharsets.UTF_8))
+        logger.info("Request body: {}", String(body, StandardCharsets.UTF_8))
         val response: ClientHttpResponse = execution.execute(request, body)
         if (response.statusCode == HttpStatus.FORBIDDEN) {
             return response
@@ -33,7 +33,7 @@ class LoggingInterceptor : ClientHttpRequestInterceptor {
         )
         val responseBody = BufferedReader(isr).lines()
             .collect(Collectors.joining("\n"))
-        logger.debug("Response body: {}", responseBody)
+        logger.info("Response body: {}", responseBody)
         return response
     }
 

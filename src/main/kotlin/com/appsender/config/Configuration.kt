@@ -1,4 +1,4 @@
-package com.kochava.demo.config
+package com.appsender.config
 
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.context.annotation.Bean
@@ -36,7 +36,6 @@ class Configuration {
         filter.setIncludePayload(true)
         filter.setMaxPayloadLength(100000)
         filter.setIncludeHeaders(false)
-        filter.setAfterMessagePrefix("REQUEST DATA : ")
         return filter
     }
 

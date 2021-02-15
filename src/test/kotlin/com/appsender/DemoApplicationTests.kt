@@ -1,4 +1,4 @@
-package com.kochava.demo
+package com.appsender
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

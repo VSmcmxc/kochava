@@ -1,4 +1,4 @@
-package com.kochava.demo.rest.dto
+package com.appsender.rest.dto
 
 data class EventData(
     val id: String = "123",

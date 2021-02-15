@@ -1,4 +1,4 @@
-package com.kochava.demo.config
+package com.appsender.config
 
 import java.lang.RuntimeException
 
